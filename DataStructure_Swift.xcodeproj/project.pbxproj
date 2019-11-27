@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		14402098238E7AE20024809B /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14402097238E7AE20024809B /* main.swift */; };
+		144020A0238E7B180024809B /* LinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1440209F238E7B180024809B /* LinkedList.swift */; };
+		144020A2238E7B390024809B /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144020A1238E7B390024809B /* Node.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +27,8 @@
 /* Begin PBXFileReference section */
 		14402094238E7AE20024809B /* DataStructure_Swift */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DataStructure_Swift; sourceTree = BUILT_PRODUCTS_DIR; };
 		14402097238E7AE20024809B /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		1440209F238E7B180024809B /* LinkedList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedList.swift; sourceTree = "<group>"; };
+		144020A1238E7B390024809B /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,8 +62,18 @@
 			isa = PBXGroup;
 			children = (
 				14402097238E7AE20024809B /* main.swift */,
+				1440209E238E7B080024809B /* Linked List */,
 			);
 			path = DataStructure_Swift;
+			sourceTree = "<group>";
+		};
+		1440209E238E7B080024809B /* Linked List */ = {
+			isa = PBXGroup;
+			children = (
+				1440209F238E7B180024809B /* LinkedList.swift */,
+				144020A1238E7B390024809B /* Node.swift */,
+			);
+			path = "Linked List";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -120,6 +134,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				144020A2238E7B390024809B /* Node.swift in Sources */,
+				144020A0238E7B180024809B /* LinkedList.swift in Sources */,
 				14402098238E7AE20024809B /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

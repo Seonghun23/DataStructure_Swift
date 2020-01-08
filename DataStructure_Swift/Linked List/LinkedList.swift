@@ -17,6 +17,18 @@ public struct LinkedList<Value> {
     public var isEmpty: Bool {
         return head == nil
     }
+    
+    public func node(at index: Int) -> Node<Value>? {
+        var currentNode = head
+        var currentIndex = 0
+        
+        while currentNode != nil && currentIndex < index {
+            currentNode = currentNode?.next
+            currentIndex += 1
+        }
+        
+        return currentNode
+    }
 }
 
 extension LinkedList: CustomStringConvertible {
@@ -31,6 +43,7 @@ extension LinkedList: CustomStringConvertible {
 extension LinkedList {
     // 리스트의 맨 앞에 값을 추가
     public mutating func push(_ value: Value) {
+        copyNodes()
         head = Node(value: value, next: head)
         if tail == nil {
             tail = head
@@ -40,8 +53,184 @@ extension LinkedList {
 
 extension LinkedList {
     // 리스트의 맨 끝에 값을 추가
+    public mutating func append(_ value: Value) {
+        copyNodes()
+        guard !isEmpty else {
+            push(value)
+            return
+        }
+        
+        tail?.next = Node(value: value)
+        
+        tail = tail?.next
+    }
 }
 
 extension LinkedList {
     // 리스트의 특정 노드 뒤에 값을 추가
+    @discardableResult
+    public mutating func insert(_ value: Value, after node: Node<Value>) -> Node<Value> {
+        if let node = copyNodes(returningCopyOf: node) {
+            guard tail !== node else {
+                append(value)
+                return tail!
+            }
+            node.next = Node(value: value, next: node.next)
+            return node.next!
+        } else {
+            guard tail !== node else {
+                append(value)
+                return tail!
+            }
+            node.next = Node(value: value, next: node.next)
+            return node.next!
+        }
+        
+    }
+}
+
+extension LinkedList {
+    // 리스트 맨 앞에 값을 삭제
+    public mutating func pop() -> Value? {
+        copyNodes()
+        defer {
+            head = head?.next
+            if isEmpty {
+                tail = nil
+            }
+        }
+        return head?.value
+    }
+}
+
+extension LinkedList {
+    // 리스트 마지막 값을 삭제
+    public mutating func removeLast() -> Value? {
+        copyNodes()
+        guard let head = head else {
+            return nil
+        }
+        
+        guard head.next != nil else {
+            return pop()
+        }
+        
+        var prev = head
+        var current = head
+        
+        while let next = current.next {
+            prev = current
+            current = next
+        }
+        
+        prev.next = nil
+        tail = prev
+        return current.value
+    }
+}
+
+extension LinkedList {
+    // 특정 노드 다음에 위치한 노드를 삭제
+    @discardableResult
+    public mutating func remove(after node: Node<Value>) -> Value? {
+        guard let node = copyNodes(returningCopyOf: node) else { return nil }
+        defer {
+            if node.next === tail {
+                tail = node
+            }
+            node.next = node.next?.next
+        }
+        return node.next?.value 
+    }
+}
+
+extension LinkedList: Collection {
+    public struct Index: Comparable {
+        public var node: Node<Value>?
+        
+        static public func ==(lhs: Index, rhs: Index) -> Bool {
+            switch (lhs.node, rhs.node) {
+            case let (left?, right?):
+                return left.next === right.next
+            case (nil, nil):
+                return true
+            default:
+                return false
+            }
+        }
+        
+        static public func <(lhs: Index, rhs: Index) -> Bool {
+            guard lhs != rhs else {
+                return false
+            }
+            let nodes = sequence(first: lhs.node) { $0?.next }
+            return nodes.contains { $0 === rhs.node }
+        }
+    }
+    
+    public var startIndex: Index {
+        Index(node: head)
+    }
+    
+    public var endIndex: Index {
+        Index(node: tail?.next)
+    }
+    
+    public func index(after i: Index) -> Index {
+        Index(node: i.node?.next)
+    }
+    
+    public subscript(position: Index) -> Value {
+        position.node!.value
+    }
+}
+
+extension LinkedList {
+    private mutating func copyNodes() {
+        guard !isKnownUniquelyReferenced(&head) else {
+            return
+        }
+        guard var oldNode = head else {
+            return
+        }
+        
+        head = Node(value: oldNode.value)
+        var newNode = head
+        
+        while let nextOldNode = oldNode.next {
+            newNode!.next = Node(value: nextOldNode.value)
+            newNode = newNode!.next
+            
+            oldNode = nextOldNode
+        }
+        
+        tail = newNode
+    }
+}
+
+extension LinkedList {
+    private mutating func copyNodes(returningCopyOf node: Node<Value>?) -> Node<Value>? {
+        guard !isKnownUniquelyReferenced(&head) else {
+            return nil
+        }
+        
+        guard var oldNode = head else {
+            return nil
+        }
+        
+        head = Node(value: oldNode.value)
+        var newNode = head
+        var nodeCopy: Node<Value>?
+        
+        while let nextOldNode = oldNode.next {
+            if oldNode === node {
+                nodeCopy = newNode
+            }
+            newNode!.next = Node(value: nextOldNode.value)
+            newNode = newNode!.next
+            oldNode = nextOldNode
+        }
+        
+        return nodeCopy
+    }
 }

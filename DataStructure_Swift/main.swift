@@ -11,11 +11,18 @@ import Foundation
 print("Hello, World!")
 
 // Mark: - Stack Example
-StackExample.pushAndPop()
-StackExample.initFromArray()
-StackExample.initFromArrayLiteral()
+//StackExample.pushAndPop()
+//StackExample.initFromArray()
+//StackExample.initFromArrayLiteral()
 
 // Mark: - Linked List Example
-LinkedListExample.node()
-LinkedListExample.push()
-
+//LinkedListExample.node()
+//LinkedListExample.push()
+//LinkedListExample.append()
+//LinkedListExample.insert()
+//LinkedListExample.pop()
+//LinkedListExample.removeLast()
+//LinkedListExample.removeAfter()
+//LinkedListExample.collection()
+//LinkedListExample.linkedListCOW()
+//LinkedListExample.sharingNodes()

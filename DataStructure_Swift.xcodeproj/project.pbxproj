@@ -13,6 +13,7 @@
 		144020A2238E7B390024809B /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144020A1238E7B390024809B /* Node.swift */; };
 		1443285D23C48FFC00CF24BB /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1443285C23C48FFC00CF24BB /* Stack.swift */; };
 		1443285F23C4900800CF24BB /* StackExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1443285E23C4900800CF24BB /* StackExample.swift */; };
+		14E6818023E70C050036BCB1 /* Heap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E6817F23E70C050036BCB1 /* Heap.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,6 +36,7 @@
 		144020A1238E7B390024809B /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		1443285C23C48FFC00CF24BB /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		1443285E23C4900800CF24BB /* StackExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackExample.swift; sourceTree = "<group>"; };
+		14E6817F23E70C050036BCB1 /* Heap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Heap.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				14402097238E7AE20024809B /* main.swift */,
+				14E6817E23E70BF90036BCB1 /*  Heap */,
 				1443285B23C48FED00CF24BB /* Stack */,
 				1440209E238E7B080024809B /* Linked List */,
 			);
@@ -91,6 +94,14 @@
 				1443285E23C4900800CF24BB /* StackExample.swift */,
 			);
 			path = Stack;
+			sourceTree = "<group>";
+		};
+		14E6817E23E70BF90036BCB1 /*  Heap */ = {
+			isa = PBXGroup;
+			children = (
+				14E6817F23E70C050036BCB1 /* Heap.swift */,
+			);
+			path = " Heap";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -157,6 +168,7 @@
 				1443285F23C4900800CF24BB /* StackExample.swift in Sources */,
 				144020A0238E7B180024809B /* LinkedList.swift in Sources */,
 				14402098238E7AE20024809B /* main.swift in Sources */,
+				14E6818023E70C050036BCB1 /* Heap.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
